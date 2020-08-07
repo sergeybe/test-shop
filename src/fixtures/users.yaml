@@ -1,0 +1,18 @@
+- model: users.user
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$180000$XHUzCDUgMhHh$UbK7qdEF8QS/bQ4Az7mrLhPySfvaNS2RB1G7yCBOTt4=
+    last_login: null
+    is_superuser: true
+    username: demo
+    first_name: 'Demo User'
+    last_name: ''
+    is_staff: true
+    is_active: true
+    date_joined: 2020-08-05 17:55:55.520070+00:00
+    patronymic_name: ''
+    address: 'One moon of Saturn.'
+    phone: ''
+    email: 'demo@example.com'
+    groups: []
+    user_permissions: []

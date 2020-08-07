@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Profile' %}
+{% endblock %}
+
+{% block header %}
+    <h1 class="col">{% trans 'Your profile' %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <table class="col-5">
+                <thead>
+                    <tr></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Username:</th>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">E-mail:</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone:</th>
+                        <td>{{ user.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">First name:</th>
+                        <td>{{ user.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Patronymic name:</th>
+                        <td>{{ user.patronymic_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Second name:</th>
+                        <td>{{ user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Address:</th>
+                        <td>{{ user.address }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row mt-3">
+            <a href="{% url 'profile_edit_page' %}" class="btn btn-primary">{% trans 'Edit profile' %}</a>
+        </div>
+    </div>
+{% endblock %}

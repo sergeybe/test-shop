@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}
+    {% trans 'Cart' %}
+{% endblock %}
+
+{% block header %}
+    <h1>{% trans 'Cart' %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if product_list %}
+    <div class="row">
+        <table class="table col table-striped">
+            <thead>
+                <tr>
+                    <th>{% trans 'Description' %}</th>
+                    <th>{% trans 'Category' %}</th>
+                    <th>{% trans 'Quantity' %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in product_list %}
+                <tr>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>{{ product.quantity }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <a href="{% url 'create_order' %}" class="btn btn-primary" role="button">{% trans 'Check out' %}</a>
+    </div>
+    {% else %}
+    <div class="row">
+        <p>No items here. Add products to cart from <a href="{% url 'all_products_page' %}">catalog</a>.</p>
+    </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n static crispy_forms_tags %}
+
+{% block title %}
+    {% trans 'Edit profile' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row  justify-content-center">
+            <form class="col-4" method="post">
+                <div class="col text-center">
+                    <h1 class="h3 mb-4 font-weight-normal">{% trans 'Edit profile' %}</h1>
+                </div>
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Save' %}</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

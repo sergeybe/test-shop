@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n static crispy_forms_tags %}
+
+{% block title %}
+    {% trans 'Sign in' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <form class="col-4" method="post">
+                <div class="col text-center">
+                    <img class="mb-4" src="{% static 'shopping-cart.svg' %}" alt="" width="72" height="72">
+                    <h1 class="h3 mb-4 font-weight-normal">Please sign in</h1>
+                </div>
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <p class="mt-5 mb-3 text-center text-muted">&copy; 2020</p>
+            </form>
+        </div>
+        <div class="row text-center justify-content-center">
+            <p class="col-4">Please <a href="{% url 'sign_up' %}">sign up</a> if you don't have account.</p>
+        </div>
+    </div>
+
+{% endblock %}

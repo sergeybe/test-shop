@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n static shop_tags %}
+
+{% block title %}
+    {% trans 'Catalog' %}
+{% endblock %}
+
+{% block header %}
+    <h1 class="col">{% trans 'Catalog' %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for product in product_list %}
+        <div class="col-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="{{ MEDIA_PREFIX }}{{ product.image.url }}" alt="...">
+                    <h5 class="card-title mb-2">Category: {{ product.category.name }}</h6>
+                    <h6 class="card-title mb-2">Price: ${{ product.price }}</h6>
+                    <p class="card-text">{{ product.description }}</p>
+                    {% add_to_cart_form product.id 1 %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

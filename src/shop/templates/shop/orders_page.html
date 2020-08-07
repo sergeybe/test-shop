@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}
+    {% trans 'Orders' %}
+{% endblock %}
+
+{% block header %}
+    <h1>{% trans 'Orders' %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if order_list %}
+    <div class="row">
+        <table class="table col table-striped">
+            <thead>
+                <tr>
+                    <th>{% trans 'Id' %}</th>
+                    <th>{% trans 'Full name' %}</th>
+                    <th>{% trans 'Delivery address' %}</th>
+                    <th>{% trans 'E-mail' %}</th>
+                    <th>{% trans 'Phone' %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order_list %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.get_full_name }}</td>
+                    <td>{{ order.address }}</td>
+                    <td>{{ order.email }}</td>
+                    <td>{{ order.phone }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="row">
+        <p>{% trans 'No orders here.' %}</p>
+    </div>
+    {% endif %}
+{% endblock %}

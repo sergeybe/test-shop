@@ -1,0 +1,10 @@
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'all_products_page' %}">All categories</a>
+    </li>
+    {% for category in category_list %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'product_page' category.id %}">{{ category.name }}</a>
+    </li>
+    {% endfor %}
+</ul>

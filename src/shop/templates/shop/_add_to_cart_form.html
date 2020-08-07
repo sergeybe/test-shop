@@ -1,0 +1,6 @@
+{% load i18n %}
+<form action="{% url 'add_to_cart' %}?next={{ next }}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="card-link btn btn-primary" value="{% trans 'Buy' %}">
+</form>
