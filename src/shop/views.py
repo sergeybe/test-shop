@@ -127,15 +127,18 @@ class AddToCartView(RedirectFieldNameMixin, FormView):
             form.cleaned_data['quantity'],
         )
 
-        print(form.cleaned_data, self.request.session)
+        logger.debug(
+            'AddToCartView.form_valid %r, %r',
+            form.cleaned_data,
+            self.request.session,
+        )
 
         return super().form_valid(form)
 
     def form_invalid(self, form):
         """Process invalid form."""
         # Doing as valid. Silence is golden :)
-        logger.warning('Form error: %r', form.errors)
-        print(form.errors)
+        logger.warning('AddToCartView.form_invalid %r', form.errors)
         return super().form_valid(form)
 
     def save_product_in_cart(self, product_id, quantity):
@@ -186,7 +189,6 @@ class OrderCreateView(CreateView):
             self.request.user.get_for_checkout()
         )
 
-        print(initial)
         return initial
 
     def clear_cart(self):
